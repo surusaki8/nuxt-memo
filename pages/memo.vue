@@ -20,7 +20,9 @@
             </tr>
             <tr>
                 <th></th>
-                <td><button @click="insert">save</button>
+                <td>
+                    <button @click="reset">reset</button>
+                    <button @click="insert">save</button>
                     <transition name="del">
                         <button v-if="sel_flg != false" 
                         @click="remove">delete</button>
@@ -131,6 +133,12 @@ export default {
         prev: function() {
             this.page--;
         },
+        reset: function() {
+            this.title = '';
+            this.content = '';
+            this.find_flg = false;
+            this.sel_flg = false;
+        }
     },
     created: function() {
         this.$store.commit('memo/set_page', 0);
